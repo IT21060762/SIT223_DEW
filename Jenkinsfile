@@ -23,14 +23,14 @@ pipeline {
             post {
                 success {
                     
-                        to: "${env.RECIPIENT_EMAIL}",
+                        mail to: "dewmithwishmitha01@gmail.com",
                         subject: "Test Stage Passed",
                         body: "Test stage passed successfully.",
                         attachLog: true
                     
                 }
                 failure {
-                        mail to: "${env.RECIPIENT_EMAIL}",
+                        mail to: "dewmithwishmitha01@gmail.com",
                         subject: "Test Stage Failed",
                         body: "Test stage failed. Please check the logs for details.",
                         attachLog: true
@@ -54,23 +54,23 @@ pipeline {
                     echo "Waiting for manual approval..."
                     sleep(time: 10, unit: 'SECONDS')
                 }
-                post {
-                success {
+                    post {
+                    success {
+                        
+                            mail  to: "dewmithwishmitha01@gmail.com",
+                            subject: "Test Stage Passed",
+                            body: "Scan stage passed successfully.",
+                            attachLog: true
+                        
+                    }
+                    failure {
+                            mail to: "dewmithwishmitha01@gmail.com",
+                            subject: "Test Stage Failed",
+                            body: "Scan stage failed. Please check the logs for details.",
+                            attachLog: true
                     
-                        to: "${env.RECIPIENT_EMAIL}",
-                        subject: "Test Stage Passed",
-                        body: "Scan stage passed successfully.",
-                        attachLog: true
-                    
+                    }
                 }
-                failure {
-                        mail to: "${env.RECIPIENT_EMAIL}",
-                        subject: "Test Stage Failed",
-                        body: "Scan stage failed. Please check the logs for details.",
-                        attachLog: true
-                
-                }
-            }
             }
         }
         stage('Deploy to Production') {
