@@ -22,17 +22,14 @@ pipeline {
             }
             post {
                 success {
-                    
-                        mail to: "dewmithwishmitha01@gmail.com",
-                        subject: "Test Stage Passed",
-                        body: "Test stage passed successfully.",
-                    
+                    mail to: "dewmithwishmitha01@gmail.com",
+                    subject: "Test Stage Passed",
+                    body: "Test stage passed successfully."
                 }
                 failure {
-                        mail to: "dewmithwishmitha01@gmail.com",
-                        subject: "Test Stage Failed",
-                        body: "Test stage failed. Please check the logs for details.",
-                
+                    mail to: "dewmithwishmitha01@gmail.com",
+                    subject: "Test Stage Failed",
+                    body: "Test stage failed. Please check the logs for details."
                 }
             }
         }
@@ -52,19 +49,16 @@ pipeline {
                     echo "Waiting for manual approval..."
                     sleep(time: 10, unit: 'SECONDS')
                 }
-                    post {
+                post {
                     success {
-                        
-                            mail  to: "dewmithwishmitha01@gmail.com",
-                            subject: "Test Stage Passed",
-                            body: "Scan stage passed successfully.",
-                        
+                        mail  to: "dewmithwishmitha01@gmail.com",
+                        subject: "Approval Stage Passed",
+                        body: "Scan stage passed successfully."
                     }
                     failure {
-                            mail to: "dewmithwishmitha01@gmail.com",
-                            subject: "Test Stage Failed",
-                            body: "Scan stage failed. Please check the logs for details.",
-                    
+                        mail to: "dewmithwishmitha01@gmail.com",
+                        subject: "Approval Stage Failed",
+                        body: "Scan stage failed. Please check the logs for details."
                     }
                 }
             }
