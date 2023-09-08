@@ -26,14 +26,12 @@ pipeline {
                         mail to: "dewmithwishmitha01@gmail.com",
                         subject: "Test Stage Passed",
                         body: "Test stage passed successfully.",
-                        attachLog: true
                     
                 }
                 failure {
                         mail to: "dewmithwishmitha01@gmail.com",
                         subject: "Test Stage Failed",
                         body: "Test stage failed. Please check the logs for details.",
-                        attachLog: true
                 
                 }
             }
@@ -60,14 +58,12 @@ pipeline {
                             mail  to: "dewmithwishmitha01@gmail.com",
                             subject: "Test Stage Passed",
                             body: "Scan stage passed successfully.",
-                            attachLog: true
                         
                     }
                     failure {
                             mail to: "dewmithwishmitha01@gmail.com",
                             subject: "Test Stage Failed",
                             body: "Scan stage failed. Please check the logs for details.",
-                            attachLog: true
                     
                     }
                 }
