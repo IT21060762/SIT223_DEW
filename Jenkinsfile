@@ -5,7 +5,6 @@ pipeline {
         DIRECTORY_PATH = "/path/to/code"
         TESTING_ENVIRONMENT = "Jenkins"
         PRODUCTION_ENVIRONMENT = "Dewmith Wishmitha"
-        RECIPIENT_EMAIL = "dewmithwishmitha01@gmail.com" // to send email
     }
 
     stages {
@@ -22,20 +21,40 @@ pipeline {
             }
             post {
                 success {
-                    mail to: "dewmithwishmitha01@gmail.com",
-                    subject: "Test Stage Passed",
-                    body: "Test stage passed successfully."
+                    emailext (
+                        subject: 'Test Stage - Success',
+                        body: 'The Test stage has completed successfully.',
+                        to: 'dinukshal@gmail.com'
+                    )
                 }
                 failure {
-                    mail to: "dewmithwishmitha01@gmail.com",
-                    subject: "Test Stage Failed",
-                    body: "Test stage failed. Please check the logs for details."
+                    emailext (
+                        subject: 'Test Stage - Failure',
+                        body: 'The Test stage has failed.',
+                        to: 'dinukshal@gmail.com'
+                    )
                 }
             }
         }
         stage('Code Quality Check') {
             steps {
                 echo "Checking the quality of the code"
+            }
+            post {
+                success {
+                    emailext (
+                        subject: 'Code Quality Check - Success',
+                        body: 'The Code Quality Check stage has completed successfully.',
+                        to: 'dinukshal@gmail.com'
+                    )
+                }
+                failure {
+                    emailext (
+                        subject: 'Code Quality Check - Failure',
+                        body: 'The Code Quality Check stage has failed.',
+                        to: 'dinukshal@gmail.com'
+                    )
+                }
             }
         }
         stage('Deploy') {
@@ -48,18 +67,6 @@ pipeline {
                 script {
                     echo "Waiting for manual approval..."
                     sleep(time: 10, unit: 'SECONDS')
-                }
-                post {
-                    success {
-                        mail  to: "dewmithwishmitha01@gmail.com",
-                        subject: "Approval Stage Passed",
-                        body: "Scan stage passed successfully."
-                    }
-                    failure {
-                        mail to: "dewmithwishmitha01@gmail.com",
-                        subject: "Approval Stage Failed",
-                        body: "Scan stage failed. Please check the logs for details."
-                    }
                 }
             }
         }
