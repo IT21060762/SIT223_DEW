@@ -22,20 +22,19 @@ pipeline {
             }
             post {
                 success {
-                    emailext (
+                    
+                        to: "${env.RECIPIENT_EMAIL}",
                         subject: "Test Stage Passed",
                         body: "Test stage passed successfully.",
-                        to: "${env.RECIPIENT_EMAIL}",
                         attachLog: true
-                    )
+                    
                 }
                 failure {
-                    emailext (
+                        mail to: "${env.RECIPIENT_EMAIL}",
                         subject: "Test Stage Failed",
                         body: "Test stage failed. Please check the logs for details.",
-                        to: "${env.RECIPIENT_EMAIL}",
                         attachLog: true
-                    )
+                
                 }
             }
         }
@@ -55,6 +54,23 @@ pipeline {
                     echo "Waiting for manual approval..."
                     sleep(time: 10, unit: 'SECONDS')
                 }
+                post {
+                success {
+                    
+                        to: "${env.RECIPIENT_EMAIL}",
+                        subject: "Test Stage Passed",
+                        body: "Scan stage passed successfully.",
+                        attachLog: true
+                    
+                }
+                failure {
+                        mail to: "${env.RECIPIENT_EMAIL}",
+                        subject: "Test Stage Failed",
+                        body: "Scan stage failed. Please check the logs for details.",
+                        attachLog: true
+                
+                }
+            }
             }
         }
         stage('Deploy to Production') {
