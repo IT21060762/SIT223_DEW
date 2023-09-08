@@ -5,7 +5,7 @@ pipeline {
         DIRECTORY_PATH = "/path/to/code"
         TESTING_ENVIRONMENT = "Jenkins"
         PRODUCTION_ENVIRONMENT = "Dewmith Wishmitha"
-        RECIPIENT_EMAIL = "dewmithwishmitha01@gmail.com" 
+        RECIPIENT_EMAIL = "dewmithwishmitha01@gmail.com" // to send email
     }
 
     stages {
