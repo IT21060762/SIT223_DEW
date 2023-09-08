@@ -21,18 +21,10 @@ pipeline {
             }
             post {
                 success {
-                    emailext (
-                        subject: 'Test Stage - Success',
-                        body: 'The Test stage has completed successfully.',
-                        to: 'dinukshal@gmail.com'
-                    )
-                }
-                failure {
-                    emailext (
-                        subject: 'Test Stage - Failure',
-                        body: 'The Test stage has failed.',
-                        to: 'dinukshal@gmail.com'
-                    )
+                        mail to: "dinukshal@gmail.com",
+                        subject: "Test Stage - Success",
+                        body: "The Test stage has completed successfully."
+
                 }
             }
         }
@@ -42,18 +34,10 @@ pipeline {
             }
             post {
                 success {
-                    emailext (
-                        subject: 'Code Quality Check - Success',
-                        body: 'The Code Quality Check stage has completed successfully.',
-                        to: 'dinukshal@gmail.com'
-                    )
-                }
-                failure {
-                    emailext (
-                        subject: 'Code Quality Check - Failure',
-                        body: 'The Code Quality Check stage has failed.',
-                        to: 'dinukshal@gmail.com'
-                    )
+                        mail to: "dinukshal@gmail.com",
+                        subject: "Test Stage - Success",
+                        body: "The Test stage has completed successfully."
+
                 }
             }
         }
