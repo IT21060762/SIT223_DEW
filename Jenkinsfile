@@ -33,6 +33,7 @@ pipeline {
                 echo "Checking the quality of the code"
             }
             post {
+                //this my comment
                 success {
                         mail to: "dinukshal@gmail.com",
                         subject: "Scanning Stage - Success",
